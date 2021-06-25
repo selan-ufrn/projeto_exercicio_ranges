@@ -116,5 +116,4 @@ class TestManager {
 #define EXPECT_GE( value1, value2 ) _tm.result( _test_id, value1>=value2, __LINE__ )
 #define EXPECT_LT( value1, value2 ) _tm.result( _test_id, value1<value2, __LINE__ )
 #define EXPECT_LE( value1, value2 ) _tm.result( _test_id, value1<=value2, __LINE__ )
-#define DISABLE() _tm.enable( _test_id, false );
-
+#define DISABLE() _tm.enable( _test_id, false )
