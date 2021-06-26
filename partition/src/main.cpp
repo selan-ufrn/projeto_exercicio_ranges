@@ -26,7 +26,7 @@ int main ( void )
         // Location of the pointer must be correct.
         EXPECT_EQ( result , std::end(A) );
         // Uset STL function to test whether the partion worked.
-        EXPECT_TRUE( std::is_partitioned( std::begin(A), std::begin(A), predicate ) );
+        EXPECT_TRUE( std::is_partitioned( std::begin(A), std::end(A), predicate ) );
         // Let us see if the elements have been preserved.
         std::sort(std::begin(A), std::end(A));
         std::vector<int> v_intersection;
@@ -48,7 +48,7 @@ int main ( void )
         // Location of the pointer must be correct.
         EXPECT_EQ( std::distance( std::begin(A), result ), 0 );
         // Uset STL function to test whether the partion worked.
-        EXPECT_TRUE( std::is_partitioned( std::begin(A), std::begin(A), predicate ) );
+        EXPECT_TRUE( std::is_partitioned( std::begin(A), std::end(A), predicate ) );
         EXPECT_EQ( result, std::begin(A) );
         // Let us see if the elements have been preserved.
         std::sort(std::begin(A), std::end(A));
@@ -69,7 +69,7 @@ int main ( void )
         auto result = which_lib::partition( std::begin(A), std::end(A), predicate );
         EXPECT_EQ( std::distance( std::begin(A), result ), 5 );
         // Uset STL function to test whether the partion worked.
-        EXPECT_TRUE( std::is_partitioned( std::begin(A), std::begin(A), predicate ) );
+        EXPECT_TRUE( std::is_partitioned( std::begin(A), std::end(A), predicate ) );
         // Let us see if the elements have been preserved.
         std::sort(std::begin(A), std::end(A));
         std::sort(std::begin(A_E), std::end(A_E));
@@ -90,7 +90,7 @@ int main ( void )
         auto result = which_lib::partition( std::begin(A), std::end(A), predicate );
         EXPECT_EQ( std::distance( std::begin(A), result ), 5 );
         // Uset STL function to test whether the partion worked.
-        EXPECT_TRUE( std::is_partitioned( std::begin(A), std::begin(A), predicate ) );
+        EXPECT_TRUE( std::is_partitioned( std::begin(A), std::end(A), predicate ) );
         // Let us see if the elements have been preserved.
         std::sort(std::begin(A), std::end(A));
         std::vector<int> v_intersection;
