@@ -19,6 +19,7 @@ int main ( void )
         int A[]{ 6, 7, 8, 9, 10 };
         int A_E[]{ 6, 7, 8, 9, 10 };
 
+        // Lambda expression
         auto predicate = []( const int& e )->bool{ return e > 5; };
 
         auto result = which_lib::partition( std::begin(A), std::end(A), predicate );

@@ -8,8 +8,8 @@
 
 using namespace graal;
 
-#define which_lib graal
-//#define which_lib std // descomente para testar a mesma função usando a biblioteca padrão.
+// #define which_lib graal
+#define which_lib std // descomente para testar a mesma função usando a biblioteca padrão.
 
 int main ( void )
 {
@@ -17,10 +17,23 @@ int main ( void )
     {
         BEGIN_TEST( tm,"Rotate2", "Block");
         int A[]{ 1, 2, 3, 4, 5, 6, 7 };
-        int A_E[]{ 5, 6, 7, 1, 2, 3, 4 };
+        size_t sz{sizeof(A)/sizeof(A[0])};
+        int A_E[ ][7]{
+            { 1, 2, 3, 4, 5, 6, 7 },
+            { 2, 3, 4, 5, 6, 7, 1 },
+            { 3, 4, 5, 6, 7, 1, 2 },
+            { 4, 5, 6, 7, 1, 2, 3 },
+            { 5, 6, 7, 1, 2, 3, 4 },
+            { 6, 7, 1, 2, 3, 4, 5 },
+            { 7, 1, 2, 3, 4, 5, 6 }
+        };
 
-        which_lib::rotate( std::begin(A), std::begin(A)+4, std::end(A) );
-        EXPECT_TRUE( std::equal( std::begin(A), std::end(A), std::begin(A_E) ) );
+        for ( size_t i{0} ; i <  sz ; ++i ) {
+            // Reset original array: copy row 0 over other rows, before rotating.
+            std::copy( std::begin(A_E[0]), std::end(A_E[0]), A );
+            which_lib::rotate( std::begin(A), std::begin(A)+i, std::end(A) );
+            EXPECT_TRUE( std::equal( std::begin(A), std::end(A), std::begin(A_E[i]) ) );
+        }
 
     }
 
