@@ -32,9 +32,9 @@ bool p(const string &b)
 Desta forma, quando a função testar os elementos ela não precisa se preocupar se são strings.
 
 ## Retorno
-- all_of: retorna verdadeiro se todos os elementos do range satisfazem p, falso caso contrário
-- any_of: retorna verdadeiro se ao menos um elemento do range satisfaz p, falso caso contrário
-- none_of: retorna verdadeiro se todos os elementos do range __não__ satisfazem p, falso caso contrário
+- all_of: retorna verdadeiro se todos os elementos do range satisfazem p, falso caso contrário. Se o range estiver vazio, retorna verdadeiro.
+- any_of: retorna verdadeiro se ao menos um elemento do range satisfaz p, falso caso contrário. Se o range estiver vazio, retorna falso.
+- none_of: retorna verdadeiro se todos os elementos do range __não__ satisfazem p, falso caso contrário. Se o range estiver vazio, retorna verdadeiro.
 
 ## Complexidade
 Linear, no máximo last - first aplicações de p
